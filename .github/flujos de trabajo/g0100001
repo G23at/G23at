@@ -1,0 +1,112 @@
+DOCTYPEHTML5 >
+< enlace  rel =" autor " title =" Gaby Martinez " href =" mailto:dgrogan@chromium.org " >
+< enlace  rel =" ayuda " href =" https://drafts.csswg.org/css-flexbox/#intrinsic-sizes " >
+< guión  src =" /resources/testharness.js " > </ guión >
+< script  src =" /resources/testharnessreport.js " > </ script >
+< script  src =" /resources/check-layout-th.js " > </ script >
+< meta  name =" afirmar " contenido =" el ancho mínimo del contenido se calcula correctamente en una variedad de escenarios con dos elementos flexibles "/>estilo >
+  . ancho cero {
+    ancho :  0 píxeles ;
+    altura :  100 píxeles ;
+    margen inferior :  20 px ;
+  }
+caja flexible flotante {
+    pantalla : flexible;
+    contorno :  5 px azul sólido;
+    altura :  100 píxeles ;
+    flotante : izquierda;
+  }caja-flexible-flotante > div : nth-child ( 1 ) {
+    fondo : amarillo;
+  }
+caja-flexible-flotante > div : nth-child ( 2 ) {
+    fondo : naranja;
+  }caja-flexible-flotante > div > div {
+    ancho :  100 píxeles ;
+  }
+</ estilo >
+caja-flexible-flotante > div > div {
+    ancho :  100 píxeles ;
+  }
+</ estilo >cuerpo  onload =" checkLayout('.floating-flexbox') " >
+  < principal >
+    < div  class =" ancho cero " >
+      < clase div  =" caja-flexible-flotante " ancho-de-datos-esperado =" 300 " >
+        < estilo div  =" flex: 1 1 200px; ancho: 50px; " >
+          < div > </ div >
+        </ div >
+        < estilo div  =" flex: 1 1 400px; ancho: 50px; " >
+          < div > </ div >
+        </ div >
+      </ div >
+    </ div >
+
+div  class =" ancho cero " >
+      < clase div  =" caja-flexible-flotante " ancho-de-datos-esperado =" 225 " >
+        < estilo div  =" flex: 1 1 200px; ancho: 50px; " >
+          < div > </ div >
+        </ div >
+        < estilo div  =" flex: 1 2 400px; ancho: 50px; " >
+          < div > </ div >
+        </ div >
+      </ div >
+    </ div >
+Esto es igual que el anterior, excepto que el ancho mínimo automático ya no está en
+      efecto. EdgeHTML lo representa de manera diferente a lo anterior. -->
+    < div  class =" ancho cero " >
+      < clase div  =" caja-flexible-flotante " ancho-de-datos-esperado =" 225 " >
+        < estilo div  =" flex: 1 1 200px; ancho: 50px; ancho mínimo: 0px; " >
+          < div > </ div >
+        </ div >
+        < estilo div  =" flex: 1 2 400px; ancho: 50px; ancho mínimo: 0px; " >
+          < div > </ div >
+        </ div >
+      </ div >
+    </ div >
+div  class =" ancho cero " >
+      < clase div  =" caja-flexible-flotante " ancho-de-datos-esperado =" 600 " >
+        < estilo div  =" flex: 1 0 200px; ancho:50px; " >
+          < div > </ div >
+        </ div >
+        < estilo div  =" flex: 1 1 400px; ancho: 50px; " >
+          < div > </ div >
+        </ div >
+      </ div >
+    </ div >
+div  class =" ancho cero " >
+      < clase div  =" caja-flexible-flotante " ancho-de-datos-esperado =" 200 " >
+        < estilo div  =" flex: 0 0 50px; ancho: 200px; " >
+          < div > </ div >
+        </ div >
+        < estilo div  =" flex: 0 0 50px; ancho: 200px; " >
+          < div > </ div >
+        </ div >
+      </ div >
+    </ div >
+div  class =" ancho cero " >
+      <!-- 200 + 400 = 600 -->
+      < clase div  =" caja-flexible-flotante " ancho-de-datos-esperado =" 600 " >
+        <!-- contribución: 200 -->
+        <!-- fracción: 150 -->
+        <!-- 50 + 1*150 = 200 -->
+        < estilo div  =" flex: 1 0 50px; ancho: 200px; " >
+          < div > </ div >
+        </ div >
+        <!-- contribución: 200 -->
+        <!-- fracción: 100 -->
+        <!-- 100 + 2*150 = 400 -->
+        < estilo div  =" flex: 2 0 100px; ancho: 200px; " >
+          < div > </ div >
+        </ div >
+      </ div >
+    </ div >
+div  class =" ancho cero " >
+      < clase div  =" caja-flexible-flotante " ancho-de-datos-esperado =" 400 " >
+        < estilo div  =" flex: 0 1 200px; ancho: 50px; " >
+          < div > </ div >
+        </ div >
+        < estilo div  =" flex: 2 0 100px; ancho: 200px; " >
+          < div > </ div >
+        </ div >
+      </ div >
+    </ div >
+  </ principal >
